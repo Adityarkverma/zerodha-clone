@@ -1,0 +1,15 @@
+.footDiv a{
+    color: black;
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+
+.endLinks a{
+    color: black;
+    font-weight: 500;
+    font-size: 12px;
+    opacity: .6 ;
+    margin-right: 3rem;
+
+}
