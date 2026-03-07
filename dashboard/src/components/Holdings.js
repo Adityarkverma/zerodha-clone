@@ -8,7 +8,7 @@ const Holdings = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/allHoldings", {
+      .get("/allHoldings", {
         withCredentials: true,
       })
       .then((res) => {

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
-import { CookiesProvider } from "react-cookie"; 
+import { CookiesProvider } from "react-cookie";
 import HomePage from "./landing_page/home/HomePage";
 import Login from "./landing_page/signup/Login";
 import Signup from "./landing_page/signup/Signup";
@@ -14,7 +14,6 @@ import SupportPage from "./landing_page/support/SupportPage";
 import Navbar from "./landing_page/Navbar";
 import Footer from "./landing_page/Footer";
 import NotFound from "./landing_page/NotFound";
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -29,6 +28,13 @@ root.render(
         <Route path="/product" element={<ProductPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/support" element={<SupportPage />} />
+        <Route
+          path="/kite"
+          element={() => {
+            window.location.href = "/kite";
+            return null;
+          }}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

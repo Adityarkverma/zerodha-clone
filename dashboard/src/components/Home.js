@@ -14,7 +14,7 @@ const Home = () => {
       const isValid = await checkAuth();
       const data = await checkAuth();
       if (!isValid) {
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = "/login";
       } else {
         setAuthorized(true);
         setUsername(data.username);

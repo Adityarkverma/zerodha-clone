@@ -9,7 +9,7 @@ const Positions = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/allPositions", {
+      .get("/allPositions", {
         withCredentials: true,
       })
       .then((res) => {

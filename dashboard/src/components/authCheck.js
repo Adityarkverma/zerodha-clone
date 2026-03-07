@@ -3,7 +3,7 @@ import axios from "axios";
 export const checkAuth = async () => {
   try {
     const { data } = await axios.post(
-      "http://localhost:3002/auth/verify",
+      "/auth/verify",
       {},
       { withCredentials: true }
     );

@@ -6,12 +6,12 @@ const Logout = () => {
     const logoutUser = async () => {
       try {
         await axios.post(
-          "http://localhost:3002/logout",
+          "/logout",
           {},
           { withCredentials: true },
         );
 
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = "/";
       } catch (error) {
         console.log("Logout error:", error);
       }

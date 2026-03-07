@@ -84,8 +84,8 @@ function Navbar() {
                   Support
                 </Link>
               </li>
-              <li class="nav-item">
-                <a className="nav-link active" href="http://localhost:3001">
+              <li className="nav-item">
+                <a className="nav-link active" href="/kite">
                   Kite
                 </a>
               </li>

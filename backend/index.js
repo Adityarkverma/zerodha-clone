@@ -6,7 +6,7 @@ const bodyParser=  require("body-parser");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/AuthRoute");
-
+const path = require("path");
  const { HoldingsModel } = require("./model/HoldingsModel");
 const { PositionsModel } = require("./model/PositionsModel");
 const {OrdersModel} = require("./model/OrdersModel");
@@ -21,7 +21,7 @@ const app = express();
 mongoose.connect(uri);
 
 app.use(cors({
-  origin: ["http://localhost:3000","http://localhost:3001"],
+  origin: true,
   credentials: true
 }));
 app.use(bodyParser.json());
@@ -29,6 +29,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/auth", authRoute);
 app.use("/", tradeRoutes);
+app.use(express.static(path.join(__dirname, "frontend-build")));
+app.use("/kite", express.static(path.join(__dirname, "dashboard-build")));
 
 app.post("/logout", (req, res) => {
   res.clearCookie("token");
@@ -36,6 +38,8 @@ app.post("/logout", (req, res) => {
 });
 
 const { userVerification } = require("./middlewares/AuthMiddleware");
+
+
 
 app.get("/allHoldings", userVerification, async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
@@ -79,6 +83,15 @@ app.post('/newHolding',async(req,res)=>{
   newHolding.save();
   res.send("Order saved!");
 })
+
+app.get(/^\/kite(\/.*)?$/, (req, res) => {
+  res.sendFile(path.join(__dirname, "dashboard-build", "index.html"));
+});
+
+app.get(/^(?!\/kite).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend-build", "index.html"));
+});
+
 
 
 app.listen(PORT, () => {
