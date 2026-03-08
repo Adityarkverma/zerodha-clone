@@ -21,7 +21,7 @@ const app = express();
 mongoose.connect(uri);
 
 app.use(cors({
-  origin: true,
+  origin: "https://zerodha-clone-1pk6.onrender.com",
   credentials: true
 }));
 app.use(bodyParser.json());
